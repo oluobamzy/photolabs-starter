@@ -1,12 +1,20 @@
 import React from 'react';
+import TopicList from './TopicList';
+import FavBadge from './FavBadge';
+import '../styles/TopNavigationBar.scss';
 
-import '../styles/TopNavigationBar.scss'
-
-const TopNavigation = () => {
+const TopNavigation = (props) => {
   return (
     <div className="top-nav-bar">
-      <span className="top-nav-bar__logo">PhotoLabs</span>
+    <span className="top-nav-bar__logo">PhotoLabs</span>
+      <div className='list-area-adjust'>
+        <TopicList topics={props.topics} toggleFavorite={props.toggleFavorite}
+          favoritePhotoIds={props.favoritePhotoIds}/>
+        <FavBadge 
+          favoritePhotoIds={props.favoritePhotoIds}/>
+      </div>
     </div>
+
   )
 }
 

@@ -82,26 +82,26 @@ const useApplicationData = () => {
     likes: 0, // Initialize likes to 0
     dislikes: 0,
   }));
-  const fetchPhotosForTopic = (topicId) => {
-    fetch(`/api/topics/photos/${topicId}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Fetch error: ${response.status} - ${response.statusText}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        dispatch({ type: 'FETCH_PHOTOS_FOR_TOPIC', payload: { photos: data } });
-      })
-      .catch((error) => {
-        console.error('Error fetching photos:', error);
-      });
-  };
-    useEffect(() => {
-    if (topicArr.length > 0) {
-      fetchPhotosForTopic(topicArr[0].slug); // Fetch photos for the first topic initially
-    }
-  }, [topicArr]);
+  // const fetchPhotosForTopic = (topicId) => {
+  //   fetch(`/api/topics/photos/${topicId}`)
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error(`Fetch error: ${response.status} - ${response.statusText}`);
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       dispatch({ type: 'FETCH_PHOTOS_FOR_TOPIC', payload: { photos: data } });
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching photos:', error);
+  //     });
+  // };
+  //   useEffect(() => {
+  //   if (topicArr.length > 0) {
+  //     fetchPhotosForTopic(topicArr[0].slug); // Fetch photos for the first topic initially
+  //   }
+  // }, [topicArr]);
   return {
     ...state,
     toggleFavorite,
@@ -113,4 +113,4 @@ const useApplicationData = () => {
   };
 };
 
-export { useApplicationData };
+export default  useApplicationData;
