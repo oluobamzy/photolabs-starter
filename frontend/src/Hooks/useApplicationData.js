@@ -34,7 +34,6 @@ const useApplicationData = () => {
   };
 
   const clickTopic = (topicId) => {
-   // dispatch({ type: 'CLICK_TOPIC', payload: { topicId } });
     fetchPhotosForTopic(topicId);
   };
 
@@ -102,7 +101,7 @@ const useApplicationData = () => {
 
   useEffect(() => {
     if (topicArr.length > 0) {
-      fetchPhotosForTopic(topicArr[0].id); // Fetch photos for the first topic initially
+      fetchPhotosForTopic(topicArr[0].id); // Fetch photos for the first topic
     }
   }, []);
 

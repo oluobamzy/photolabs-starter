@@ -3,7 +3,6 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoFavButton.scss";
 const PhotoListItem = (props) => {
-  //console.log(props)
   const isFavorite = props.favoritePhotoIds.includes(props.id);
   return (
     <Fragment>
