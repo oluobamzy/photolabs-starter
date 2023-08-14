@@ -1,13 +1,27 @@
 import React from 'react';
-
+import TopNavigation from 'components/TopNavigationBar';
+import PhotoList from 'components/PhotoList';
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = () => {
+
+const HomeRoute = (props) => {
   return (
     <div className="home-route">
-      {/* Insert React */}
-    </div>
+      <TopNavigation topics={props.topics} photos={props.photos} toggleFavorite={props.toggleFavorite}
+          favoritePhotoIds={props.favoritePhotoIds}/>
+        <div className="photo-list-style">
+          {/* Pass topics and photos props to TopicList and PhotoList */}
+         <PhotoList photos={props.photos} onModalClick = {props.onPhotoClick}   toggleFavorite={props.toggleFavorite}
+          favoritePhotoIds={props.favoritePhotoIds}/> 
+        </div>
+        <div>
+          <footer>
+            <p>PhotoLabs</p>
+          </footer>
+        </div>
+      </div>
   );
 };
 
 export default HomeRoute;
+  
