@@ -5,10 +5,10 @@ you with the necessary information to set up and run the PhotoLabs application.
 PhotoLabs is a web application built using Express for the backend and React for the frontend. 
 It utilizes React Hooks and the useReducer hook for state management.
 
-![After each topic click](frontend/src/docs/After_each_topic_click.png)
-![Footer](frontend/src/docs/beautiful_marked_footer.png)
-![Favorited photos with notifications](frontend/src/docs/favorited_photos_and_notifications.png)
-![modal_display](frontend/src/docs/modal_display_of_full_image_on_modal_click.png)
+![After each topic click](docs/After_each_topic_click.png)
+![Footer](docs/beautiful_marked_footer.png)
+![Favorited photos with notifications](docs/favorited_photos_and_notifications.png)
+![modal_display](docs/modal_display_of_full_image_on_modal_click.png)
 
 
 # Photolabs-Getting Started
