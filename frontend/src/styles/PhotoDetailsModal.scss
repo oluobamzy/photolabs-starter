@@ -34,6 +34,7 @@
 .photo-details-modal__image {
   max-width: 95%;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .photo-details-modal__top-bar {
@@ -58,4 +59,13 @@
   margin-bottom: 24px;
   width: 90%;
   margin-left: 16px;
+}
+h2{
+  font-size: 18px;
+  font-weight: 500;
+  color: #1e1e1e;
+  margin-top: 24px;
+  margin-bottom: 10px;
+  width: 90%;
+  margin-left: 36px;
 }
