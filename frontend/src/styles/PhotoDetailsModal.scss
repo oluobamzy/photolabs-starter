@@ -9,6 +9,7 @@
   width: 55%;
   overflow-y: scroll;
   border-radius: 12px;
+  justify-content: center;
 }
 
 .photo-details-modal__close-button {
@@ -27,6 +28,7 @@
 .photo-details-modal__images {
   margin-left: 36px;
   margin-top: 8px;
+  display:flex
 }
 
 .photo-details-modal__image {
@@ -55,4 +57,5 @@
   margin-top: 24px;
   margin-bottom: 24px;
   width: 90%;
+  margin-left: 16px;
 }

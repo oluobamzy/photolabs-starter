@@ -4,4 +4,10 @@
   justify-content: center;
   align-items: center;
   margin-right: 24px;
+  list-style-type: none;
+
+  li::marker{
+    font-size: 20px; /* Adjust the font size as desired */
+    color:grey;
+  }
 }
