@@ -16,8 +16,9 @@ const App = () => {
     photosArr,
     handleModalOpen,
     handleModalClose,
+    clickTopic,
   } = useApplicationData();
-
+  console.log('photosArr', photosArr);
   return (
     <div className='App'>
       <HomeRoute
@@ -26,6 +27,7 @@ const App = () => {
         onPhotoClick={handleModalOpen}
         toggleFavorite={toggleFavorite}
         favoritePhotoIds={favoritePhotoIds}
+        clickTopic={clickTopic}
       />
       <PhotoDetailsModal 
         isOpen={isModalOpen}

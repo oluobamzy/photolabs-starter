@@ -8,7 +8,7 @@ const HomeRoute = (props) => {
   return (
     <div className="home-route">
       <TopNavigation topics={props.topics} photos={props.photos} toggleFavorite={props.toggleFavorite}
-          favoritePhotoIds={props.favoritePhotoIds}/>
+          favoritePhotoIds={props.favoritePhotoIds} clickTopic={props.clickTopic}/>
         <div className="photo-list-style">
           {/* Pass topics and photos props to TopicList and PhotoList */}
          <PhotoList photos={props.photos} onModalClick = {props.onPhotoClick}   toggleFavorite={props.toggleFavorite}

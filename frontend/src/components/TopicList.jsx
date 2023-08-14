@@ -11,9 +11,9 @@ const TopicList = (props) => {
       {props.topics.map((topic) => (
         <TopicListItem
           key={topic.id}
-          id={topic.id} // Assign the 'id' prop to the TopicListItem
-          slug={topic.slug}
+          id={topic.id}
           title={topic.title}
+          clickTopic={props.clickTopic}
         />
       ))}
     </ul>

@@ -27,14 +27,15 @@ const useApplicationData = () => {
     };
     fetchPhotos();
     fetchTopics();
-  }, []);
+  }, [state.selectedTopic]);
   
   const toggleFavorite = (photoId) => {
     dispatch({ type: 'TOGGLE_FAVORITE', payload: { photoId } });
   };
 
-  const clickTopic = (topicSlug) => {
-    dispatch({ type: 'CLICK_TOPIC', payload: { topicSlug } });
+  const clickTopic = (topicId) => {
+   // dispatch({ type: 'CLICK_TOPIC', payload: { topicId } });
+    fetchPhotosForTopic(topicId);
   };
 
   const handleModalOpen = (photo) => {
@@ -51,7 +52,7 @@ const useApplicationData = () => {
     id: topic.id,
     slug: topic.slug,
     title: topic.title,
-    onClick: () => clickTopic(topic.slug),
+    onClick: () => clickTopic(topic.id),
   }));
 
   const photosArr = photos.map((photo) => ({
@@ -79,29 +80,32 @@ const useApplicationData = () => {
     username: photo.user.name,
     profile: photo.user.profile,
     s_photos: photo.similar_photos,
-    likes: 0, // Initialize likes to 0
+    likes: 0,
     dislikes: 0,
   }));
-  // const fetchPhotosForTopic = (topicId) => {
-  //   fetch(`/api/topics/photos/${topicId}`)
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error(`Fetch error: ${response.status} - ${response.statusText}`);
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       dispatch({ type: 'FETCH_PHOTOS_FOR_TOPIC', payload: { photos: data } });
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching photos:', error);
-  //     });
-  // };
-  //   useEffect(() => {
-  //   if (topicArr.length > 0) {
-  //     fetchPhotosForTopic(topicArr[0].slug); // Fetch photos for the first topic initially
-  //   }
-  // }, [topicArr]);
+
+  const fetchPhotosForTopic = (topicId) => {
+    fetch(`/api/topics/photos/${topicId}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Fetch error: ${response.status} - ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        dispatch({ type: 'fetchPhotos', payload: { photos: data } });
+      })
+      .catch((error) => {
+        console.error('Error fetching photos:', error);
+      });
+  };
+
+  useEffect(() => {
+    if (topicArr.length > 0) {
+      fetchPhotosForTopic(topicArr[0].id); // Fetch photos for the first topic initially
+    }
+  }, []);
+
   return {
     ...state,
     toggleFavorite,
@@ -110,7 +114,8 @@ const useApplicationData = () => {
     photosArr,
     handleModalOpen,
     handleModalClose,
+    clickTopic
   };
 };
 
-export default  useApplicationData;
+export default useApplicationData;

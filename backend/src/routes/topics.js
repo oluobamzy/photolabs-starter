@@ -1,17 +1,6 @@
 const router = require("express").Router();
 
 module.exports = db => {
-  router.get("/topics", (request, response) => {
-    db.query(`
-      SELECT 
-      topic.id,
-      topic.title,
-      topic.slug
-      FROM topic
-    `).then(({ rows: topics }) => {
-      response.json(topics);
-    });
-  });
   
   router.get("/topics/photos/:id", (request, response) => {
     const protocol = request.protocol;
@@ -73,6 +62,17 @@ module.exports = db => {
       response.json(rows[0].topic_photo_data);
     });
   });
-
+  router.get("/topics", (request, response) => {
+    db.query(`
+      SELECT 
+      topic.id,
+      topic.title,
+      topic.slug
+      FROM topic
+    `).then(({ rows: topics }) => {
+      response.json(topics);
+    });
+  });
+  
   return router;
 };
