@@ -15,7 +15,7 @@ const HomeRoute = (props) => {
         </div>
         <div>
           <footer>
-            <p>PhotoLabs</p>
+            <p>PhotoLabs 2023</p>
           </footer>
         </div>
       </div>
