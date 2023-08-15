@@ -3,6 +3,7 @@ import { initialState, reducer } from './reducer';
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const { photos, topics, searchQuery, favoritePhotoIds, selectedTopic } = state;
 
   useEffect(() => {
     const fetchPhotos = () => {
@@ -20,14 +21,14 @@ const useApplicationData = () => {
           dispatch({ type: 'fetchTopics', payload: { topics: data } });
     
           // Fetch photos for the initially selected topic (if available)
-          if (state.selectedTopic) {
-            fetchPhotosForTopic(state.selectedTopic);
+          if (selectedTopic) {
+            fetchPhotosForTopic(selectedTopic);
           }
         });
     };
     fetchPhotos();
     fetchTopics();
-  }, [state.selectedTopic]);
+  }, [selectedTopic]);
   
   const toggleFavorite = (photoId) => {
     dispatch({ type: 'TOGGLE_FAVORITE', payload: { photoId } });
@@ -44,8 +45,6 @@ const useApplicationData = () => {
   const handleModalClose = () => {
     dispatch({ type: 'CLOSE_MODAL' });
   };
-
-  const { photos, topics } = state;
 
   const topicArr = topics.map((topic) => ({
     id: topic.id,
@@ -104,16 +103,30 @@ const useApplicationData = () => {
       fetchPhotosForTopic(topicArr[0].id); // Fetch photos for the first topic
     }
   }, []);
+  const handleSearch = (searchQuery) => {
+    dispatch({ type: 'SET_SEARCH_QUERY', payload: { searchQuery } });
+  };
+
+  const filteredPhotos= (photos, query) => {
+    return photos.filter((photo) =>
+      photo.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      photo.location.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      photo.location.country.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  };
+  
+
 
   return {
     ...state,
     toggleFavorite,
     topicArr,
     similarPhotosArr,
-    photosArr,
+    photosArr : filteredPhotos(photosArr, photos),
     handleModalOpen,
     handleModalClose,
-    clickTopic
+    clickTopic,
+    handleSearch,
   };
 };
 

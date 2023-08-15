@@ -1,3 +1,4 @@
+
 import React from 'react';
 import './App.scss';
 import HomeRoute from './routes/HomeRoute';
@@ -16,8 +17,8 @@ const App = () => {
     handleModalOpen,
     handleModalClose,
     clickTopic,
+    handleSearch
   } = useApplicationData();
-  console.log('photosArr', photosArr);
   return (
     <div className='App'>
       <HomeRoute
@@ -27,6 +28,7 @@ const App = () => {
         toggleFavorite={toggleFavorite}
         favoritePhotoIds={favoritePhotoIds}
         clickTopic={clickTopic}
+        handleSearch={handleSearch}
       />
       <PhotoDetailsModal 
         isOpen={isModalOpen}

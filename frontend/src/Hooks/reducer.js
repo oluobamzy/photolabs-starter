@@ -4,6 +4,7 @@ const initialState = {
   selectedPhoto: null,
   photos:[],
   topics:[],
+  searchQuery: '',
 };
 
 const reducer = (state, action) => {
@@ -50,6 +51,12 @@ const reducer = (state, action) => {
             ...state,
             photosForTopic: action.payload.photos,
           };
+
+          case 'SET_SEARCH_QUERY':
+            return {
+              ...state,
+              searchQuery: action.payload.searchQuery,
+            }
     default:
       return state;
   }

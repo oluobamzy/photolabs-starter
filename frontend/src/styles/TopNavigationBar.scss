@@ -21,3 +21,40 @@
 .list-area-adjust{
   display:flex;
 }
+/* Style for the search bar container */
+.live-search {
+  position: relative;
+  display: inline-block;
+}
+
+/* Style for the search input */
+.live-search input[type="text"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+  width: 200px;
+}
+
+.live-search input[type="text"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+/* Optional: Style for search icon inside the input */
+.live-search input[type="text"]::placeholder {
+  color: #aaa;
+}
+
+/* Optional: Style for the search icon */
+.live-search::before {
+  content: "\f002"; /* Unicode for search icon (FontAwesome) */
+  font-family: FontAwesome;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #aaa;
+}
