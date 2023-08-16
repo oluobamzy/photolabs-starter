@@ -18,9 +18,11 @@
   text-underline-position: auto;
   margin-left: 24px;
 }
-.list-area-adjust{
-  display:flex;
+
+.list-area-adjust {
+  display: flex;
 }
+
 /* Style for the search bar container */
 .live-search {
   position: relative;
@@ -50,7 +52,8 @@
 
 /* Optional: Style for the search icon */
 .live-search::before {
-  content: "\f002"; /* Unicode for search icon (FontAwesome) */
+  content: "\f002";
+  /* Unicode for search icon (FontAwesome) */
   font-family: FontAwesome;
   position: absolute;
   top: 50%;

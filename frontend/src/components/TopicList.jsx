@@ -4,7 +4,7 @@ import TopicListItem from "./TopicListItem";
 
 const TopicList = (props) => {
   if (!props.topics) {
-    return null; // or display a loading message
+    return null; 
   }
   return (
     <ul className="top-nav-bar__topic-list">

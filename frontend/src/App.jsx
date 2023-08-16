@@ -4,7 +4,7 @@ import './App.scss';
 import HomeRoute from './routes/HomeRoute';
 import useApplicationData from './Hooks/useApplicationData';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import photos from 'mocks/photos';
+
 
 const App = () => {
   const {
@@ -30,7 +30,7 @@ const App = () => {
         clickTopic={clickTopic}
         handleSearch={handleSearch}
       />
-      <PhotoDetailsModal 
+      <PhotoDetailsModal
         isOpen={isModalOpen}
         onClose={handleModalClose}
         imageSource={selectedPhoto}

@@ -8,28 +8,28 @@ const PhotoListItem = (props) => {
     <Fragment>
       <div className="main-container photo-list__item ">
         <div className="container-for-items">
-            <PhotoFavButton
+          <PhotoFavButton
             photoId={props.id}
             toggleFavorite={() => props.toggleFavorite(props.id)}
             isFavorite={isFavorite}
-            />
-           <img src={props.image} alt="image description" className="photo-list__image" 
-           onClick={()=> props.onPhotoClick(props)}
-           />
+          />
+          <img src={props.image} alt="image description" className="photo-list__image"
+            onClick={() => props.onPhotoClick(props)}
+          />
         </div>
         <div className="profile-section">
-          <img src={props.profile} alt="profile description" className="photo-list__user-profile"/>
+          <img src={props.profile} alt="profile description" className="photo-list__user-profile" />
           <div className="photo-list__user-details ">
             <h1 className="photo-list__user-info ">{props.username}</h1>
             <div className="info-area">
-            <h1 className="photo-list__user-location photo-list__user-info ">{props.city +` ,`}</h1>
-            <h1 className="photo-list__user-location photo-list__user-info ">{props.country}</h1>
+              <h1 className="photo-list__user-location photo-list__user-info ">{props.city + ` ,`}</h1>
+              <h1 className="photo-list__user-location photo-list__user-info ">{props.country}</h1>
             </div>
           </div>
         </div>
       </div>
     </Fragment>
-  )
+  );
 };
 
 export default PhotoListItem;
