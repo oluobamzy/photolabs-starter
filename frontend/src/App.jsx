@@ -4,6 +4,7 @@ import './App.scss';
 import HomeRoute from './routes/HomeRoute';
 import useApplicationData from './Hooks/useApplicationData';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import photos from 'mocks/photos';
 
 const App = () => {
   const {
@@ -12,7 +13,6 @@ const App = () => {
     selectedPhoto,
     toggleFavorite,
     topicArr,
-    similarPhotosArr,
     photosArr,
     handleModalOpen,
     handleModalClose,
@@ -34,7 +34,6 @@ const App = () => {
         isOpen={isModalOpen}
         onClose={handleModalClose}
         imageSource={selectedPhoto}
-        photos={similarPhotosArr}
         toggleFavorite={toggleFavorite}
         favoritePhotoIds={favoritePhotoIds}
       />

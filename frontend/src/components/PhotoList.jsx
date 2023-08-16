@@ -14,6 +14,7 @@ const PhotoList = (props) => {
           country={photo.location.country}
           toggleFavorite={props.toggleFavorite}
           favoritePhotoIds={props.favoritePhotoIds}
+          similarPhotos={photo.similar_photos}
           id={photo.id}
           onPhotoClick={props.onModalClick}
         />

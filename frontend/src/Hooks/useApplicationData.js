@@ -68,19 +68,6 @@ const useApplicationData = () => {
       favorite: state.favoritePhotoIds.includes(photo.id),
     }));
 
-  const similarPhotosArr = photos.map((photo) => ({
-    id: photo.id,
-    location: {
-      city: photo.location.city,
-      country: photo.location.country,
-    },
-    imageSource: photo.urls.full,
-    username: photo.user.name,
-    profile: photo.user.profile,
-    s_photos: photo.similar_photos,
-    likes: 0,
-    dislikes: 0,
-  }));
 
   const fetchPhotosForTopic = (topicId) => {
     fetch(`/api/topics/photos/${topicId}`)
@@ -121,7 +108,6 @@ const useApplicationData = () => {
     ...state,
     toggleFavorite,
     topicArr,
-    similarPhotosArr,
     photosArr : filteredPhotos(photosArr, photos),
     handleModalOpen,
     handleModalClose,
