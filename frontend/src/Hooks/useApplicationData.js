@@ -6,29 +6,30 @@ const useApplicationData = () => {
   const { photos, topics, searchQuery, favoritePhotoIds, selectedTopic } = state;
 
   useEffect(() => {
-    const fetchPhotos = () => { // Fetch photos from the API
-      fetch('/api/photos')
-        .then((response) => response.json())
-        .then((data) =>
-          dispatch({ type: 'fetchPhotos', payload: { photos: data } })
-        );
+    const fetchPhotos = () => {
+      return fetch('/api/photos')
+        .then(response => response.json());
     };
-
-    const fetchTopics = () => {// Fetch topics from the API
-      fetch('/api/topics')
-        .then((response) => response.json())
-        .then((data) => {
-          dispatch({ type: 'fetchTopics', payload: { topics: data } });
-
-          // Fetch photos for the initially selected topic (if available)
-          if (selectedTopic) {
-            fetchPhotosForTopic(selectedTopic);
-          }
-        });
+  
+    const fetchTopics = () => {
+      return fetch('/api/topics')
+        .then(response => response.json());
     };
-    fetchPhotos();
-    fetchTopics();
+  
+    Promise.all([fetchPhotos(), fetchTopics()])
+      .then(([photosData, topicsData]) => {
+        dispatch({ type: 'fetchPhotos', payload: { photos: photosData } });
+        dispatch({ type: 'fetchTopics', payload: { topics: topicsData } });
+  
+        if (selectedTopic) {
+          fetchPhotosForTopic(selectedTopic);
+        }
+      })
+      .catch(error => {
+        // Handle error
+      });
   }, [selectedTopic]);
+  
 
 
   const toggleFavorite = (photoId) => {// Toggle favorite for a photo

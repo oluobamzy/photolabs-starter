@@ -18,8 +18,8 @@ const PhotoDetailsModal = ({ isOpen, onClose, imageSource, toggleFavorite, favor
       <button className="photo-details-modal__close-button photo-details-modal__top-bar" onClick={onClose}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
-      <PhotoFavButton className="fav-button-modal" />
       <div className="photo-details-modal__images photo-details-modal__image ">
+      <PhotoFavButton className="photo-list__fav-icon-modal" />
         <img src={imageSource.image} alt="photo details" />
       </div>
       <h2>Similar Photos</h2>
