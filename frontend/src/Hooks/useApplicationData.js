@@ -5,7 +5,7 @@ const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { photos, topics, searchQuery, favoritePhotoIds, selectedTopic } = state;
 
-  useEffect(() => {
+  useEffect(() => {// Fetch photos and topics
     const fetchPhotos = () => {
       return fetch('/api/photos')
         .then(response => response.json());
@@ -92,19 +92,17 @@ const useApplicationData = () => {
       fetchPhotosForTopic(topicArr[0].id); // Fetch photos for the first topic
     }
   }, []);
-  const handleSearch = (searchQuery) => {// Handle  Live search
+  const handleSearch = (searchQuery) => {
     dispatch({ type: 'SET_SEARCH_QUERY', payload: { searchQuery } });
   };
 
-  const filteredPhotos = (photos, query) => {// Filter photos
+  const filteredPhotos = (photos, query) => {// Filter photos to handle search functionality
     return photos.filter((photo) =>
       photo.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
       photo.location.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
       photo.location.country.toLowerCase().includes(searchQuery.toLowerCase())
     );
   };
-
-
 
   return {
     ...state,

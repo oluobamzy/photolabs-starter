@@ -1,3 +1,5 @@
+//reducers to handle the state of the app  
+
 const initialState = {
   favoritePhotoIds: [],
   isModalOpen: false,
